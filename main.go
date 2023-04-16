@@ -1,24 +1,35 @@
 package main
 
 import (
+	"archive/zip"
 	"io"
 	"os"
-	"strconv"
 	"strings"
 )
 
+var source = `1line
+2line
+3line`
+
 func main() {
-	writer := os.Stdout
-	reader := strings.NewReader("123456789012345678901234567890")
-	size, err := strconv.Atoi(os.Args[1])
+	// 出力先のファイルを作成
+	outputFile, err := os.Create("example.zip")
 	if err != nil {
 		panic(err)
 	}
+	defer outputFile.Close()
 
-	myCopyN(writer, reader, size)
-}
+	// zip.Writerを作成
+	zipWriter := zip.NewWriter(outputFile)
+	defer zipWriter.Close()
 
-func myCopyN(w io.Writer, r io.Reader, length int) {
-	reader := io.LimitReader(r, int64(length))
-	io.Copy(w, reader)
+	// 新しいファイルをzipアーカイブに追加
+	filename := "example.txt"
+	fileContents := "This is an example text file."
+	fileWriter, err := zipWriter.Create(filename)
+	if err != nil {
+		panic(err)
+	}
+	fileReader := strings.NewReader(fileContents)
+	io.Copy(fileWriter, fileReader)
 }
