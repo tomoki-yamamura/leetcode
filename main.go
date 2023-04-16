@@ -2,17 +2,10 @@ package main
 
 import (
 	"archive/zip"
-	"io"
-	"os"
-	"strings"
 )
 
-var source = `1line
-2line
-3line`
-
 func main() {
-	// 出力先のファイルを作成
+	出力先のファイルを作成
 	outputFile, err := os.Create("example.zip")
 	if err != nil {
 		panic(err)
@@ -32,4 +25,25 @@ func main() {
 	}
 	fileReader := strings.NewReader(fileContents)
 	io.Copy(fileWriter, fileReader)
+
+	// reader, err := zip.OpenReader("example.zip")
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// defer reader.Close()
+
+	// for _, file := range reader.File {
+	// 	fmt.Println(file.Name)
+	// 	openedFile, err := file.Open()
+	// 	if err != nil {
+	// 		panic(err)
+	// 	}
+	// 	defer openedFile.Close()
+	// 	fileContents, err := ioutil.ReadAll(openedFile)
+	// 	if err != nil {
+	// 		panic(err)
+	// 	}
+	// 	fmt.Println(string(fileContents))
+	// }
+
 }
