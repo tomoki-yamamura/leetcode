@@ -1,49 +1,48 @@
 package main
 
 import (
-	"archive/zip"
+	"bufio"
+	"fmt"
+	"io"
+	"net"
+	"net/http"
+	"net/http/httputil"
+	"strings"
 )
 
+
 func main() {
-	出力先のファイルを作成
-	outputFile, err := os.Create("example.zip")
+	ln, err := net.Listen("tcp", ":8080")
 	if err != nil {
 		panic(err)
 	}
-	defer outputFile.Close()
-
-	// zip.Writerを作成
-	zipWriter := zip.NewWriter(outputFile)
-	defer zipWriter.Close()
-
-	// 新しいファイルをzipアーカイブに追加
-	filename := "example.txt"
-	fileContents := "This is an example text file."
-	fileWriter, err := zipWriter.Create(filename)
-	if err != nil {
-		panic(err)
+	fmt.Println("server is running at localhsot:8080")
+	for {
+		conn, err := ln.Accept()
+		if err != nil {
+			panic(err)
+		}
+		go func() {
+			fmt.Printf("Accept %v\n", conn.RemoteAddr())
+			request, err := http.ReadRequest(
+				bufio.NewReader(conn),
+			)
+			if err != nil {
+				panic(err)
+			}
+			dump, err := httputil.DumpRequest(request, true)
+			if err != nil {
+				panic(err)
+			}
+			fmt.Println(string(dump))
+			response := http.Response{
+				StatusCode: 200,
+				ProtoMajor: 1,
+				ProtoMinor: 0,
+				Body: io.NopCloser(strings.NewReader("hello world")),
+			}
+			response.Write(conn)
+			conn.Close()
+		}()
 	}
-	fileReader := strings.NewReader(fileContents)
-	io.Copy(fileWriter, fileReader)
-
-	// reader, err := zip.OpenReader("example.zip")
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// defer reader.Close()
-
-	// for _, file := range reader.File {
-	// 	fmt.Println(file.Name)
-	// 	openedFile, err := file.Open()
-	// 	if err != nil {
-	// 		panic(err)
-	// 	}
-	// 	defer openedFile.Close()
-	// 	fileContents, err := ioutil.ReadAll(openedFile)
-	// 	if err != nil {
-	// 		panic(err)
-	// 	}
-	// 	fmt.Println(string(fileContents))
-	// }
-
 }
