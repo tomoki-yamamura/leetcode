@@ -1,10 +1,23 @@
 package main
 
-import "fmt"
+import (
+	"github.com/tomoki-yamamura/go-docker/linked_list"
+)
 
 func main() {
-	lists := []int{1,2,3,4}
-	length := len(lists)
-	fmt.Println(lists[0:length/3])
-	fmt.Println(length/3)
+	arr := &link_list.ListNode{
+		Val: 1,
+		Next: &link_list.ListNode{
+			Val: 2,
+			Next: &link_list.ListNode{
+				Val: 3,
+				Next: &link_list.ListNode{
+					Val: 4,
+					Next: nil,
+				},
+			},
+		},
+	}
+
+	link_list.RemoveNthFromEnd(arr, 2)
 }
