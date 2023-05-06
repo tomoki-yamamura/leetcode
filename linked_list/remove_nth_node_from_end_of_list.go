@@ -1,5 +1,7 @@
 package link_list
 
+import "fmt"
+
 // my Solutin
 // Beats 100% Memory 2.3 MB Beats 48.67%
 // func RemoveNthFromEnd(head *ListNode, n int) *ListNode {
@@ -101,3 +103,23 @@ package link_list
 // 	return prev
 // }
 
+// simple solution
+func RemoveNthFromEnd(head *ListNode, n int) *ListNode {
+	dummy := &ListNode{
+		Next: head,
+	}
+	slow, fast := dummy, dummy
+	fmt.Printf("slow: %p, fast: %p, dummy: %p\n", slow, fast, dummy)
+	for i := 0; i <= n; i++ {
+		fast = fast.Next
+	}
+	for fast != nil {
+		fast = fast.Next
+		slow = slow.Next
+	}
+
+	fmt.Printf("slow: %p, fast: %p, dummy: %p\n", slow, fast, dummy)
+	slow.Next = slow.Next.Next
+
+	return dummy.Next
+}

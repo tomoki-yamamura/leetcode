@@ -11,13 +11,23 @@ func main() {
 			Val: 2,
 			Next: &link_list.ListNode{
 				Val: 3,
-				Next: &link_list.ListNode{
-					Val: 4,
-					Next: nil,
-				},
+				Next: nil,
 			},
 		},
 	}
+	// arr := &link_list.ListNode{
+	// 	Val: 1,
+	// 	Next: &link_list.ListNode{
+	// 		Val: 2,
+	// 		Next: &link_list.ListNode{
+	// 			Val: 3,
+	// 			Next: &link_list.ListNode{
+	// 				Val: 4,
+	// 				Next: nil,
+	// 			},
+	// 		},
+	// 	},
+	// }
 
-	link_list.RemoveNthFromEnd(arr, 2)
+	link_list.RemoveNthFromEnd(arr, 1)
 }
