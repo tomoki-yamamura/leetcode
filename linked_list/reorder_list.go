@@ -55,10 +55,13 @@ func ReorderList(head *ListNode) {
 
 	start := head
 
+
 	for prev.Next != nil {
 		tmp1, tmp2 := start.Next, prev.Next
+		// 実態の操作
 		start.Next = prev
 		prev.Next = tmp1
+		// pointerの操作
 		start, prev = tmp1, tmp2
 	}
 }
