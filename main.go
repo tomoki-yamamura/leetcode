@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
-	result := array.MaxProfit([]int{7,6,4, 3, 1})
+	arg := []int{7,6,4, 3, 1}
+	result := array.Reverse(arg)
 	fmt.Println(result)
 }
