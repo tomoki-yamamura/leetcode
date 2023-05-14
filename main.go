@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	arg := []int{3,4,5,1,2}
+	arg := []int{3,4,1,2}
 	result := array.FindMin(arg)
 	fmt.Println(result)
 }
