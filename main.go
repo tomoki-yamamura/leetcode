@@ -4,10 +4,11 @@ import (
 	"fmt"
 
 	"github.com/tomoki-yamamura/go-docker/array"
+	// "github.com/tomoki-yamamura/go-docker/array"
 )
 
 func main() {
-	arg := []int{7,6, 0, 4, 3, 1}
-	result := array.MaxProduct(arg)
+	arg := []int{3,4,5,1,2}
+	result := array.FindMin(arg)
 	fmt.Println(result)
 }

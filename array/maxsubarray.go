@@ -2,7 +2,7 @@ package array
 
 import "math"
 
-// couldnot
+// couldnot!!!!!!!!!!!!!
 // func maxProduct(nums []int) int {
 //   result := nums[0]
 // 	var tmp int
