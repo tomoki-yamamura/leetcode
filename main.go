@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	arg := []int{7,6,4, 3, 1}
-	result := array.Reverse(arg)
+	arg := []int{7,6, 0, 4, 3, 1}
+	result := array.MaxProduct(arg)
 	fmt.Println(result)
 }
