@@ -1,5 +1,8 @@
 package array
 
+// couldnot!!!!!!!!!!!!!
+
+
 // hint
 
 // func search(nums []int, target int) int {
