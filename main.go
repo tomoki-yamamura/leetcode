@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
-	result := dp.ClimbStairs(4)
+	coins := []int{1,2,5}
+	result := dp.CoinChange(coins, 11)
 	fmt.Println(result)
 }
