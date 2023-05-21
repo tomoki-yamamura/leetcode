@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	coins := []int{1,2,5}
-	result := dp.CoinChange(coins, 11)
+	coins := []int{2,4,6}
+	result := dp.CoinChange(coins, 8)
 	fmt.Println(result)
 }

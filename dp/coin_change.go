@@ -39,20 +39,46 @@ import "math"
 // 	return a
 // }
 
+// func CoinChange(coins []int, amount int) int {
+// 	dp := make([]int, amount+1)
+// 	for i := 1; i <= amount; i++ { dp[i] = math.MaxInt32 }
+	
+// 	for _, c := range coins {
+// 			for a := 1; a <= amount; a++ {
+// 					if a >= c {
+// 							dp[a] = Min(dp[a], 1+dp[a-c])
+// 					}
+// 			}
+// 	}
+	
+// 	if dp[amount] == math.MaxInt32 { return -1 }
+// 	return dp[amount]
+// }
+
+// func Min(a, b int) int { if a < b { return a }; return b }
+
+
+// Input: coins = [1,2,5], amount = 11
 func CoinChange(coins []int, amount int) int {
 	dp := make([]int, amount+1)
-	for i := 1; i <= amount; i++ { dp[i] = math.MaxInt32 }
-	
-	for _, c := range coins {
-			for a := 1; a <= amount; a++ {
-					if a >= c {
-							dp[a] = Min(dp[a], 1+dp[a-c])
-					}
+	for i := 1; i <= amount; i++ {
+		dp[i] = math.MaxInt
+		for _, c := range coins {
+			if i-c >= 0 {
+				dp[i] = min(dp[i], 1+dp[i-c])
 			}
+		}
 	}
-	
-	if dp[amount] == math.MaxInt32 { return -1 }
+	if dp[amount] == math.MaxInt32 {
+		return -1
+	}
 	return dp[amount]
 }
 
-func Min(a, b int) int { if a < b { return a }; return b }
+
+func min(i,j int) int {
+	if i > j {
+		return j
+	}
+	return i
+}
