@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	coins := []int{2,4,6}
-	result := dp.CoinChange(coins, 8)
+	coins := []int{4,10,4,3,8,9}
+	result := dp.LengthOfLIS(coins)
 	fmt.Println(result)
 }
