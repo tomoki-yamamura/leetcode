@@ -8,6 +8,6 @@ import (
 )
 
 func main() {
-	result := dp.LongestCommonSubsequence("abcde", "ace")
+	result := dp.LongestCommonSubsequence("e", "e")
 	fmt.Println(result)
 }
