@@ -8,7 +8,6 @@ import (
 )
 
 func main() {
-	coins := []int{7,7,7,7,7,7,7}
-	result := dp.LengthOfLIS(coins)
+	result := dp.LongestCommonSubsequence("abcde", "ace")
 	fmt.Println(result)
 }
