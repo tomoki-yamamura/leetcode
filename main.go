@@ -8,6 +8,10 @@ import (
 )
 
 func main() {
-	result := dp.LongestCommonSubsequence("e", "e")
+	s := "leetcode"
+	wordDict := []string{"leet","code","neet"}
+	// s := "catsandog"
+	// wordDict := []string{"cats","dog","sand","and","cat"}
+	result := dp.WordBreak(s, wordDict)
 	fmt.Println(result)
 }
