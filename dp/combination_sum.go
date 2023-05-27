@@ -17,7 +17,9 @@ func CombinationSum4(nums []int, target int) int {
 	for i := 1; i <= target; i++ {
 		dp[i] = 0
 		for _, num := range nums {
-			dp[i] += dp[i-num]
+			if (i - num) >= 0 {
+				dp[i] += dp[i-num]
+			}
 		}
 	}
 	return dp[target]

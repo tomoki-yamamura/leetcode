@@ -8,8 +8,7 @@ import (
 )
 
 func main() {
-	nums := []int{1,2,3}
-	target := 4
-	result := dp.CombinationSum4(nums, target)
+	nums := []int{2,1,1,2}
+	result := dp.Rob(nums)
 	fmt.Println(result)
 }
