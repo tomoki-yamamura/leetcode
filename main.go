@@ -8,10 +8,8 @@ import (
 )
 
 func main() {
-	s := "leetcode"
-	wordDict := []string{"leet","code","neet"}
-	// s := "catsandog"
-	// wordDict := []string{"cats","dog","sand","and","cat"}
-	result := dp.WordBreak(s, wordDict)
+	nums := []int{1,2,3}
+	target := 4
+	result := dp.CombinationSum4(nums, target)
 	fmt.Println(result)
 }
