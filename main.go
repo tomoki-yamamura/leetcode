@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	nums := []int{2,1,1,2}
-	result := dp.Rob(nums)
+	nums := []int{1,2,3}
+	result := dp.Rob2(nums)
 	fmt.Println(result)
 }
