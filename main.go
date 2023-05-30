@@ -8,7 +8,6 @@ import (
 )
 
 func main() {
-	nums := []int{1,2,3}
-	result := dp.Rob2(nums)
+	result := dp.NumDecodings("2263")
 	fmt.Println(result)
 }
