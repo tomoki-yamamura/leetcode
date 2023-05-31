@@ -8,6 +8,6 @@ import (
 )
 
 func main() {
-	result := dp.NumDecodings("2263")
+	result := dp.UniquePaths(3,7)
 	fmt.Println(result)
 }
