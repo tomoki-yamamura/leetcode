@@ -39,3 +39,4 @@ func WordBreak(s string, wordDict []string) bool {
 
 	return dp[0]
 }
+

@@ -8,6 +8,6 @@ import (
 )
 
 func main() {
-	result := dp.UniquePaths(3,7)
+	result := dp.CombinationSum4([]int{1,2,3}, 4)
 	fmt.Println(result)
 }
